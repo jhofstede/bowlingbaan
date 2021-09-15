@@ -1,5 +1,4 @@
 import { createStore } from "redux";
-import { Button } from "@material-ui/core";
 
 const defaultState = {
   players: [],
