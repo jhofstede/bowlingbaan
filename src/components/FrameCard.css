@@ -1,0 +1,50 @@
+
+.framebox {
+    width: 100px;
+    border: solid black 1px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 0.3fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+        "frameno frameno"
+        "ball1 ball2"
+        "score score";
+}
+
+.framebox10 {
+    float: left;
+    width: 100px;
+    border: solid black 1px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 0.3fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+        "frameno frameno frameno"
+        "ball1 ball2 ball3"
+        "score score score";
+}
+
+.frameno { 
+    border: solid black 1px;
+    grid-area: frameno; 
+}
+
+.score { grid-area: score; }
+
+.ball1 { grid-area: ball1; }
+
+.ball3 {
+    grid-area: ball3;
+    border-left: solid black 1px;
+    border-bottom: solid black 1px;
+}
+
+.ball2 { 
+    grid-area: ball2;
+    border-left: solid black 1px;
+    border-bottom: solid black 1px;
+}

@@ -1,5 +1,6 @@
 .App {
-  text-align: center;
+   /* width: 60%; */
+  /* margin: 0 auto; */
 }
 
 .App-logo {
@@ -28,11 +29,10 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+.full-width {
+  /* 1/3 of 60% = the 20% margin on either side */
+  border: solid green 3px;
+  margin-left: -33.33%;
+  margin-right: -33.33%;
 }
