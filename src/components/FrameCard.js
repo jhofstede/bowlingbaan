@@ -18,6 +18,8 @@ const FrameCard = (props) => {
   // Label 2
   if (props.tenthFrame && ball2 === 10) {
     ball2Label = "X";
+  } else if (ball1 === 10) {
+    ball2Label = "X";
   } else if (ball1 + ball2 === 10 && ball2 > 0) {
     ball2Label = "/"; // Spare
   } else {
