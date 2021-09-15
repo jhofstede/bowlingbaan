@@ -1,4 +1,5 @@
 import { createStore } from "redux";
+import { Button } from "@material-ui/core";
 
 const defaultState = {
   players: [],
@@ -74,9 +75,7 @@ const gameReducer = (game = defaultState, action) => {
       // Check if it's the last player
       lastPlayer = playerIndex + 1 === state.players.length;
       
-
-      // Check if players turn is over.
-      
+      // Check if players turn is over and determine how many pins 
       const frame_to_check = new_frames[current_frame_index][playerIndex];
       if (current_frame < 10) {
         playerFrameOver = isPlayerFrameOver(frame_to_check);
@@ -88,12 +87,12 @@ const gameReducer = (game = defaultState, action) => {
           frame_to_check.length === 3 ||
           (frame_to_check.length === 2 &&
             frame_to_check[0] + frame_to_check[1] < 10);
-        if (frame_to_check[0] === 10 && frame_to_check.length === 1) {
+        if ((frame_to_check[0] === 10 && frame_to_check.length === 1) || playerFrameOver) {
           nextPins = 10;
         }
         if (
-          (frame_to_check[1] === 10 || // Strike Ball 1
-            frame_to_check[1] + frame_to_check[2] === 10) && // Spare
+          (frame_to_check[0] === 10 || // Strike Ball 1
+            frame_to_check[0] + frame_to_check[1] === 10) && // Spare
           frame_to_check.length === 2
         ) {
           nextPins = 10;
