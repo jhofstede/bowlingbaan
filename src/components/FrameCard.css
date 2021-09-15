@@ -3,6 +3,7 @@
     width: 100px;
     border: solid black 1px;
     display: grid;
+    text-align: center;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 0.3fr 1fr 1fr;
     gap: 0px 0px;
@@ -16,6 +17,7 @@
 .framebox10 {
     float: left;
     width: 100px;
+    
     border: solid black 1px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -26,6 +28,9 @@
         "frameno frameno frameno"
         "ball1 ball2 ball3"
         "score score score";
+}
+.framebox10, .framebox div{
+    text-align: center;
 }
 
 .frameno { 

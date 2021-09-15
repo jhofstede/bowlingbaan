@@ -5,6 +5,25 @@ import ScoreCardRow from "./components/ScoreCardRow";
 import PinSelector from "./components/PinSelector";
 import PlayerForm from "./components/PlayerForm";
 import { useSelector, useDispatch } from "react-redux";
+import { Button } from "@material-ui/core";
+import { makeStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardHeader from '@material-ui/core/CardHeader';
+import CardContent from '@material-ui/core/CardContent';
+import Avatar from '@material-ui/core/Avatar';
+import { red } from '@material-ui/core/colors';
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    margin: '25px',
+  },
+  avatar: {
+    backgroundColor: red[500],
+  },
+
+  
+}));
+
 /* 
 ● Correctly calculates bowling scores X
 ● Add a variable number of players with names X
@@ -17,7 +36,6 @@ import { useSelector, useDispatch } from "react-redux";
 /* TODO:
 - 0 Pins roll
 - 10th frame rendering
-- Disabling p
 */
 class ScoreCalculator {
   calculateFrame10 = (frame10) => {
@@ -110,6 +128,8 @@ class ScoreCalculator {
 }
 
 function App() {
+  const classes = useStyles();
+
   const game = useSelector((game) => game);
 
   const gameDispatch = useDispatch();
@@ -136,35 +156,51 @@ function App() {
           ? calculator.calculateTotal(playerFrames)
           : [];
         return (
-          <div key={`div_player_${index}`}>
-            <h3>
-              {playerName} had {totalScore} points.
-            </h3>
+          <Card className={classes.root}  key={`div_player_${index}`}>
+          <CardHeader
+            avatar={
+              <Avatar aria-label="recipe" className={classes.avatar}>
+                {playerName.substring(0,1).toUpperCase()}
+              </Avatar>
+            } 
+            title={`${playerName}`}
+            subheader={`Score: ${totalScore}`}
+          />
+          <CardContent>
             <ScoreCardRow
               key={`player_${index}`}
               scores={scores}
               playerFrames={playerFrames}
             />
-          </div>
+          </CardContent>
+          </Card>
+          
         );
       })}
-      <div>
+       <Card className={classes.root}>
+       <CardContent>
         {!game.started && !game.finished ? (
           <div>
             <PlayerForm />
-            <button onClick={startHandler}>START</button>
+            {game.players.length > 1 ? 
+            <Button variant="contained" color="primary" onClick={startHandler}>Start game</Button>
+            : null }
           </div>
         ) : (
           <div>
             {!game.finished ? (
-              <PinSelector onRoll={incrementHandler} />
+              <div>
+                <p>How many pins do you want to knock over?</p>
+                <PinSelector onRoll={incrementHandler} />
+              </div> 
             ) : (
               <p>Afgelopen!</p>
             )}
-            <button onClick={resetHandler}>RESET</button>
+             <Button variant="contained" color="primary" onClick={resetHandler}>RESET</Button>
           </div>
         )}
-      </div>
+      </CardContent>
+      </Card>
       <pre>
         {JSON.stringify(
           useSelector((game) => game),

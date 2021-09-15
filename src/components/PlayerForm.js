@@ -1,5 +1,6 @@
 import { React, useState } from "react";
 import { useDispatch } from "react-redux";
+import Button from "@material-ui/core/Button";
 
 const PlayerForm = () => {
   const [playerName, setName] = useState("");
@@ -24,7 +25,9 @@ const PlayerForm = () => {
         onChange={onChangeHandler}
         placeholder="Player name"
       />
-      <button type="submit">Add Player</button>
+      <Button variant="contained" color="primary" type="submit">
+        Add Player
+      </Button>
     </form>
   );
 };
