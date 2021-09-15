@@ -2,7 +2,7 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-To install `npm start`
+To install `npm install`
 To start `npm start`
 
 # Purpose
