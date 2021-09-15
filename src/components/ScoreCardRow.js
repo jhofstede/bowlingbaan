@@ -9,7 +9,7 @@ const ScoreCardRow = (props) => {
     <div className="row">
       {[...Array(10)].map((e, i) => {
         return (
-          <div className="column">
+          <div className="column" key={`framerow${i}`}>
             {playerFrames[i] ? (
               <FrameCard
                 key={`framecard${i}`}
